@@ -1,4 +1,5 @@
 const route = require('../static/systemRoutes')
+const axios = require('axios')
 
 module.exports = {
   index: async(ctx, next) => {
@@ -16,5 +17,10 @@ module.exports = {
   },
   systemRoutes: async(ctx,next) => {
     ctx.response.body = route
+  },
+  apiHome: async(ctx, next) => {
+    console.log(ctx);
+    const response = await axios.get('http://api.bilibili.com/x/web-show/res/loc?pf=0&id=23')
+    ctx.body = response.data
   }
 }

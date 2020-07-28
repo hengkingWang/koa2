@@ -7,6 +7,8 @@ const middleware = require('./middleware')
 
 router(app)
 middleware(app)
+
+
 app.listen(3000, () => {
 	console.log('server is listen in http://localhost:3000')
 })

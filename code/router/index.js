@@ -8,6 +8,7 @@ module.exports = (app) => {
   router.get('/home', controller.home)
   router.get('/home/:id/:name', controller.homeParams)
   router.get('/system/routes', controller.systemRoutes)
+  router.get('/api', controller.apiHome)
 
   app.use(router.routes()).use(router.allowedMethods())
 }
