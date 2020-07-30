@@ -1,5 +1,7 @@
-const route = require('../static/systemRoutes')
+const routes = require('../static/systemRoutes')
 const axios = require('axios')
+
+function filterRoutes() {}
 
 module.exports = {
   index: async(ctx, next) => {
@@ -16,11 +18,18 @@ module.exports = {
     ctx.response.body = `<h1>HOME page ${id}/${name}</h1>`
   },
   systemRoutes: async(ctx,next) => {
-    ctx.response.body = route
+    ctx.response.body = {code:200, data: route}
+  },
+  systemRouterFilter: async (ctx, next) => {
+    ctx.response.body = {code:200, data: routes}
   },
   apiHome: async(ctx, next) => {
     console.log(ctx);
-    const response = await axios.get('http://api.bilibili.com/x/web-show/res/loc?pf=0&id=23')
+    const response = await axios.get('http://api.bilibili.com/x/web-show/res/loc?pf=0&id=23',{
+      headers: {
+        'auth-token': ctx.header['auth-token']
+      }
+    })
     ctx.body = response.data
   }
 }

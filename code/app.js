@@ -5,8 +5,8 @@ const router = require('./router/index')
 const middleware = require('./middleware')
 
 
-router(app)
 middleware(app)
+router(app)
 
 
 app.listen(3000, () => {
