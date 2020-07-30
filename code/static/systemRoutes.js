@@ -1,3 +1,4 @@
+const Abstract = '@/components/common/abstract'
 module.exports = [
   {
     id: 1,
@@ -6,6 +7,29 @@ module.exports = [
     meta: {
       icon: "iconfont iconzonglan"
     },
-    component: () => import("@/views/Home")
+    component: 'home'
+  },
+  {
+    id: 2,
+    path: "setting",
+    name: "设置",
+    meta: {
+      icon: "iconfont iconzonglan"
+    },
+    component: 'Abstract',
+    children: [
+      {
+        id: 3,
+        path: "role",
+        name: "角色管理",
+        component: 'role'
+      },
+      {
+        id: 4,
+        path: "permission",
+        name: "权限管理",
+        component: 'permission'
+      }
+    ]
   }
 ]
